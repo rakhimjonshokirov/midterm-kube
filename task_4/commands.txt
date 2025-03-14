@@ -1,0 +1,2 @@
+kubectl create deploy nvrbckdown-flask --image=nvrbckdown/flask-app:p-v4 --port=5000 -n exam-rakhimjon
+kubectl port-forward nvrbckdown-flask-ff5f6f98f-46s76 5001:5000 -n exam-rakhimjon
