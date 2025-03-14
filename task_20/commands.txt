@@ -1,0 +1,1 @@
+curl -s http://mid-term-exam-rakhimjon.sts404.uz/load-capability

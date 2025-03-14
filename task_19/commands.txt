@@ -1,0 +1,2 @@
+kubectl exec -it my-app-b89d4d4b7-c4snl -n exam-rakhimjon -- env | grep CPU
+CPU=1

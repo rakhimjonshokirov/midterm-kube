@@ -1,0 +1,26 @@
+kubectl create serviceaccount service-test-user -n exam-rakhimjon
+serviceaccount/service-test-user created
+
+kubectl create role pod-creator-lister --verb=list,create --resource=pods --namespace=exam-rakhimjon
+role.rbac.authorization.k8s.io/pod-creator-lister created
+
+kubectl create rolebinding pod-creator-lister-binding --role=pod-creator-lister --serviceaccount=exam-rakhimjon:service-test-user --namespace=exam-rakhimjon
+rolebinding.rbac.authorization.k8s.io/pod-creator-lister-binding created
+
+kubectl get role pod-creator-lister -n exam-rakhimjon -o yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: "2025-03-14T17:14:05Z"
+  name: pod-creator-lister
+  namespace: exam-rakhimjon
+  resourceVersion: "8456789"
+  uid: 7eb384d0-8e51-4d20-b901-35892e555e7e
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - list
+  - create
