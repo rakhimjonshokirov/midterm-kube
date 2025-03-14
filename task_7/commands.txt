@@ -1,0 +1,2 @@
+curl http://37.27.12.106:30158/check-ingress
+{"domain":"37.27.12.106:30158","endpoint":"/check-ingress","full_path:":"37.27.12.106:30158/check-ingress"}

@@ -1,0 +1,1 @@
+kubectl expose deployment nvrbckdown-flask --type=NodePort --port=5000 -n exam-rakhimjon
