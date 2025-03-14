@@ -24,3 +24,29 @@ rules:
   verbs:
   - list
   - create
+
+
+kubectl create token service-test-user -n exam-rakhimjon
+tokenIget
+
+kubectl config set-credentials test-user --token=tokenIget
+User "test-user" set.
+
+kubectl config set-context test-context \
+>   --cluster=$(kubectl config view --minify -o jsonpath='{.clusters[0].name}') \
+>   --user=test-user \
+>   --namespace=exam-rakhimjon
+Context "test-context" created.
+
+kubectl config use-context test-context
+Switched to context "test-context".
+
+kubectl get pods -n exam-rakhimjon
+NAME                               READY   STATUS                       RESTARTS   AGE
+frontend-app-799bbc55c4-9dcgc      1/1     Running                      0          82m
+
+kubectl run test-pod --image=nginx -n exam-rakhimjon
+pod/test-pod created
+
+kubectl get pod test-pod -n exam-rakhimjon -o yaml
+Error from server (Forbidden): pods "test-pod" is forbidden: User "system:serviceaccount:exam-rakhimjon:service-test-user" cannot get resource "pods" in API group "" in the namespace "exam-rakhimjon"
