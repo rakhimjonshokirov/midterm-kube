@@ -1,0 +1,1 @@
+kubectl expose deployment my-app --type=NodePort --port=80 -n exam-rakhimjon

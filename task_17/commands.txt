@@ -1,0 +1,2 @@
+kubectl describe endpoints my-app -n exam-rakhimjon | awk '/Addresses:/ {print $2}'
+10.233.65.82,10.233.66.173,10.233.69.169

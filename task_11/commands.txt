@@ -1,0 +1,16 @@
+kubectl create secret generic database --from-literal=DB_URI="postgres://admin:supersecret@10.10.10.1:5432/exam-db" -n exam-rakhimjon
+secret/database created
+
+
+kubectl get secret database -o yaml -n exam-rakhimjon
+apiVersion: v1
+data:
+  DB_URI: cG9zdGdyZXM6Ly9hZG1pbjpzdXBlcnNlY3JldEAxMC4xMC4xMC4xOjU0MzIvZXhhbS1kYg==
+kind: Secret
+metadata:
+  creationTimestamp: "2025-03-14T15:28:27Z"
+  name: database
+  namespace: exam-rakhimjon
+  resourceVersion: "8424067"
+  uid: b2da462d-cb17-4ab3-99da-e8efdb4ccc60
+type: Opaque

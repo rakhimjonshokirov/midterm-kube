@@ -1,0 +1,1 @@
+kubectl get configmap info -o yaml -n exam-rakhimjon

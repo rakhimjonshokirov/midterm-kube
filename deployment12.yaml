@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-app
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - image: rakhimjonshokirov/repo-1:v2
+        name: repo-1
+        env:
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: env
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: log_leveI
+        - name: GRPC_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: grpc_port
+        - name: DB_URI
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: DB_URI
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP

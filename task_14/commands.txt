@@ -1,0 +1,5 @@
+kubectl create ingress my-ingress \
+>   --class=nginx \
+>   --namespace=exam-rakhimjon \
+>   --rule="mid-term-exam-rakhimjon.sts404.uz/*=my-app:80"
+ingress.networking.k8s.io/my-ingress created
